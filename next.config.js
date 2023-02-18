@@ -28,4 +28,19 @@ module.exports = getConfig({
   },
   /** We run eslint as a separate task in CI */
   eslint: { ignoreDuringBuilds: !!process.env.CI },
+  reactStrictMode: true,
+  compiler: (() => {
+    let compilerConfig = {
+      styledComponents: true,
+    }
+
+    if (process.env.NODE_ENV === 'production') {
+      compilerConfig = {
+        ...compilerConfig,
+        reactRemoveProperties: { properties: ['^data-testied$'] },
+      }
+    }
+
+    return compilerConfig
+  })(),
 });
