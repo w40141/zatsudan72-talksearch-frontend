@@ -1,4 +1,3 @@
----
 env:
   es2020: true
   jest/globals: true
@@ -11,6 +10,8 @@ plugins:
   - react
   - jest
   - '@typescript-eslint'
+  - import
+  - unused-imports
 settings:
   react:
     version: detect
@@ -26,6 +27,25 @@ extends:
   - plugin:import/recommended
   - plugin:import/typescript
   - prettier
-rules:
+rules: 
   react/jsx-uses-react: off
   react/react-in-jsx-scope: off
+  import/no-unresolved: off
+  import/order:
+    - warn
+    - groups:
+      - builtin
+      - external
+      - internal
+      - parent
+      - sibling
+      - index
+      - object
+      - type
+      newlines-between: always
+      pathGroupsExcludedImportTypes:
+        - builtin
+      alphabetize:
+        order: asc
+        caseInsensitive: true
+      pathGroups: []

@@ -1,5 +1,6 @@
 import NextError from 'next/error';
 import { useRouter } from 'next/router';
+
 import { NextPageWithLayout } from '~/pages/_app';
 import { RouterOutput, trpc } from '~/utils/trpc';
 
